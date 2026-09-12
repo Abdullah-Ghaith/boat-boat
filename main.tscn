@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cuy1vuv8gvby3"]
+
+[ext_resource type="Shader" uid="uid://bxxb6ccu4brwa" path="res://water.gdshader" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://4hqkctmf05gw" path="res://water.gd" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://dm45pmf06xw0a" path="res://camera_3d.gd" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cw51xxwphqokc" path="res://boat.tscn" id="4_1bvp3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
+render_priority = 0
+shader = ExtResource("1_0xm2m")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 3.0
+shader_parameter/tile = Vector2(40, 50)
+shader_parameter/time_offset = 0.0
+shader_parameter/water_transparency = 0.8
+shader_parameter/water_depth_factor = 0.1
+shader_parameter/foam_width = 0.5
+shader_parameter/foam_edge_softness = 0.05
+shader_parameter/foam_distortion_speed = 0.5
+shader_parameter/foam_distortion_amount = 0.1
+shader_parameter/time = 0.0
+shader_parameter/w1_freq = 0.3
+shader_parameter/w1_speed = 0.7
+shader_parameter/w1_amp = 0.18
+shader_parameter/w2_freq = 0.45
+shader_parameter/w2_speed = 0.55
+shader_parameter/w2_amp = 0.12
+shader_parameter/w2_cross = 0.15
+shader_parameter/w3_freq = 0.9
+shader_parameter/w3_freqy = 0.6
+shader_parameter/w3_speed = 1.6
+shader_parameter/w3_amp = 0.05
+shader_parameter/w4_freq = 1.7
+shader_parameter/w4_freqy = 1.3
+shader_parameter/w4_speed = 2.1
+shader_parameter/w4_amp = 0.02
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lquwl"]
+material = SubResource("ShaderMaterial_1bvp3")
+size = Vector2(100, 100)
+subdivide_width = 200
+subdivide_depth = 200
+
+[node name="Main" type="Node3D" unique_id=2047231183]
+
+[node name="Water" type="MeshInstance3D" parent="." unique_id=778175467]
+mesh = SubResource("PlaneMesh_lquwl")
+script = ExtResource("2_h2yge")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=8764211 node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 0.7719575, 0.6356741, 0, -0.6356741, 0.7719575, 0, 13.687178, 0)
+script = ExtResource("3_h2yge")
+target = NodePath("../Boat")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1673085704]
+transform = Transform3D(1, 0, 0, 0, -0.14033103, 0.9901046, 0, -0.9901046, -0.14033103, 0, 24, 0)
+
+[node name="Boat" parent="." unique_id=632426790 instance=ExtResource("4_1bvp3")]
