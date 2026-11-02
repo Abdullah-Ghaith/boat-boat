@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cuy1vuv8gvby3"]
 
-[ext_resource type="Shader" uid="uid://bxxb6ccu4brwa" path="res://water.gdshader" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://4hqkctmf05gw" path="res://water.gd" id="2_h2yge"]
-[ext_resource type="Script" uid="uid://dm45pmf06xw0a" path="res://camera_3d.gd" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://cw51xxwphqokc" path="res://boat.tscn" id="4_1bvp3"]
+[ext_resource type="Shader" uid="uid://bxxb6ccu4brwa" path="res://Water/water.gdshader" id="1_jjvhh"]
+[ext_resource type="Script" uid="uid://4hqkctmf05gw" path="res://Water/water.gd" id="2_kry3j"]
+[ext_resource type="Script" uid="uid://dm45pmf06xw0a" path="res://camera_3d.gd" id="3_21xkr"]
+[ext_resource type="PackedScene" uid="uid://cw51xxwphqokc" path="res://Objects/Boats/BaseBoat/boat.tscn" id="4_6bp64"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
 render_priority = 0
-shader = ExtResource("1_0xm2m")
+shader = ExtResource("1_jjvhh")
 shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
 shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
 shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
@@ -47,14 +47,14 @@ subdivide_depth = 200
 
 [node name="Water" type="MeshInstance3D" parent="." unique_id=778175467]
 mesh = SubResource("PlaneMesh_lquwl")
-script = ExtResource("2_h2yge")
+script = ExtResource("2_kry3j")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=8764211 node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 0.7719575, 0.6356741, 0, -0.6356741, 0.7719575, 0, 13.687178, 0)
-script = ExtResource("3_h2yge")
+script = ExtResource("3_21xkr")
 target = NodePath("../Boat")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1673085704]
 transform = Transform3D(1, 0, 0, 0, -0.14033103, 0.9901046, 0, -0.9901046, -0.14033103, 0, 24, 0)
 
-[node name="Boat" parent="." unique_id=632426790 instance=ExtResource("4_1bvp3")]
+[node name="Boat" parent="." unique_id=632426790 instance=ExtResource("4_6bp64")]
