@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="VehicleData" format=3 uid="uid://b1ty8im6hy5gp"]
+
+[ext_resource type="Script" uid="uid://dw272ccwgne68" path="res://Util/Globals/vehicle_data.gd" id="1_5m0na"]
+
+[resource]
+script = ExtResource("1_5m0na")
+base_engine_power = 320
+braking = -200
+metadata/_custom_type_script = "uid://dw272ccwgne68"

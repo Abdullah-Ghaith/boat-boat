@@ -32,10 +32,10 @@ func _physics_process(delta):
 	var side := Vector2(dir.z, -dir.x) * probe_span
 	var xz   := Vector2(p.x, p.z)
 
-	var hf := WaterManager.get_height(xz + fwd)
-	var hb := WaterManager.get_height(xz - fwd)
-	var hr := WaterManager.get_height(xz + side)
-	var hl := WaterManager.get_height(xz - side)
+	var hf = WaterManager.get_height(xz + fwd)
+	var hb = WaterManager.get_height(xz - fwd)
+	var hr = WaterManager.get_height(xz + side)
+	var hl = WaterManager.get_height(xz - side)
 
 	# 3. snap height
 	player.global_position.y = (hf + hb + hr + hl) * 0.25 + float_offset

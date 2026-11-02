@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bqv8vijq06k8a"]
+
+[ext_resource type="PackedScene" uid="uid://cw51xxwphqokc" path="res://Objects/Boats/BaseBoat/boat.tscn" id="1_88bfg"]
+[ext_resource type="Script" uid="uid://drffpl2neefvu" path="res://Objects/Boats/DriftBoat/Components/drift_boat_controller.gd" id="2_5gtyc"]
+[ext_resource type="Script" uid="uid://c7e3qbcr5pmrd" path="res://Objects/Boats/DriftBoat/Components/drift_handler.gd" id="3_ufsf8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3sptq"]
+size = Vector3(1, 0.77978516, 3.4500732)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p0cr7"]
+size = Vector3(1.3613892, 1, 1)
+
+[node name="DriftBoat" unique_id=632426790 groups=["player"] instance=ExtResource("1_88bfg")]
+motion_mode = 1
+
+[node name="BoatController" parent="Components" parent_id_path=PackedInt32Array(936254344) index="0" unique_id=16620399]
+script = ExtResource("2_5gtyc")
+
+[node name="DriftHandler" type="Node" parent="Components" parent_id_path=PackedInt32Array(936254344) index="1" unique_id=1294435128]
+script = ExtResource("3_ufsf8")
+
+[node name="HurtBox" type="Area3D" parent="." index="3" unique_id=1063321029]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" index="0" unique_id=2086645399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63258785, -0.14349365)
+shape = SubResource("BoxShape3D_3sptq")
+debug_color = Color(0.6533174, 0.3694275, 0.91894424, 0.41960785)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HurtBox" index="1" unique_id=1538393734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008880615, 1.225136, 0.53751117)
+shape = SubResource("BoxShape3D_p0cr7")
+debug_color = Color(0.654902, 0.36862746, 0.91764706, 0.41960785)
+
+[node name="Markers" type="Node3D" parent="." index="4" unique_id=1966568280]
+
+[node name="JetLeft" type="Marker3D" parent="Markers" index="0" unique_id=1641075292]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.528134, 0.37233487, -1.9211197)
+
+[node name="JetRight" type="Marker3D" parent="Markers" index="1" unique_id=1797366118]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65252423, 0.37233487, -1.9211197)
+
+[node name="WakeLeft" type="Marker3D" parent="Markers" index="2" unique_id=587249031]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.528134, 0.13161477, -1.6336964)
+
+[node name="WakeRight" type="Marker3D" parent="Markers" index="3" unique_id=318040074]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5545386, 0.13161477, -1.6336964)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=598823524]
+
+[editable path="boat-fishing-small2"]
